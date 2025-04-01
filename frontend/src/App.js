@@ -123,7 +123,7 @@ function Maquina({ nome }) {
   <button
     className="warning-button"
     onClick={() => comprarDoce("A")}
-    style={{ display: saldo >= DOCE_PRECOS["A"] ? "inline-block" : "none" }} // Esconde se saldo for insuficiente
+    style={{ display: saldo >= DOCE_PRECOS["A"] ? "inline-block" : "none" }}
   >
     Doce A (R$6,00)
   </button>

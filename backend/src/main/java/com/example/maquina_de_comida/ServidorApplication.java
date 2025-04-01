@@ -9,19 +9,17 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-//adicionado exclude para não precisar de login para utilizar o spring
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })  
 public class ServidorApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServidorApplication.class, args);
     }
 
-    //Método utilizado para carregar todos os arquivos no projeto
     @Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
 
-			System.out.println("Let's inspect the beans provided by Spring Boot:");
+			System.out.println("Inspeção do Spring Boot:");
 
 			String[] beanNames = ctx.getBeanDefinitionNames();
 			Arrays.sort(beanNames);

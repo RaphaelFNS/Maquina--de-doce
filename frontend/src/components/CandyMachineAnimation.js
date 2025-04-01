@@ -10,7 +10,7 @@ const CandyMachineAnimation = () => {
     setTimeout(() => {
       setShowCoin(false);
       setShowCandy(true);
-    }, 1500); // Tempo da animação da moeda
+    }, 1500);
   };
 
   return (
@@ -20,7 +20,7 @@ const CandyMachineAnimation = () => {
         {showCandy && <div className="candy"></div>}
       </div>
       <button className="btn btn-success mt-3" onClick={insertCoin}>
-        Inserir Moeda
+        Aperte para retirar seu doce!
       </button>
     </div>
   );

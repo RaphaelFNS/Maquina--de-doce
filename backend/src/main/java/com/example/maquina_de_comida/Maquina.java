@@ -1,17 +1,12 @@
 package com.example.maquina_de_comida;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Maquina {
     private String nome;
     private int saldo;
-    private List<String> docesComprados;
 
     public Maquina(String nome) {
         this.nome = nome;
         this.saldo = 0;
-        this.docesComprados = new ArrayList<>();
     }
 
     public String getNome() {
@@ -32,8 +27,7 @@ public class Maquina {
 
     public String comprarDoce(String tipo) {
         int preco = 0;
-        String tipoCorrigido = tipo.replace("\"", ""); 
-
+        String tipoCorrigido = tipo.replace("\"", "");
         switch (tipoCorrigido) {
             case "A": preco = 6; break;
             case "B": preco = 7; break;
@@ -43,31 +37,19 @@ public class Maquina {
 
         if (this.saldo >= preco) {
             this.saldo -= preco;
-            docesComprados.add(tipoCorrigido);
-            return "Você comprou o Doce " + tipoCorrigido + "!";
+            return "Você comprou o Doce " + tipo + "!";
         } else {
-            return "Saldo insuficiente! Insira mais moedas.";
+            return "Saldo insuficiente!";
         }
     }
 
-    public String finalizarCompra() {
-        if (docesComprados.isEmpty()) {
-            return "Nenhum doce comprado!";
-        }
-
-        StringBuilder resultado = new StringBuilder("Compra finalizada: ");
-        for (String doce : docesComprados) {
-            resultado.append("Doce ").append(doce).append(" ");
-        }
-
-        if (docesComprados.size() > 1 && saldo > 0) {
-            resultado.append("com troco de R$").append(saldo).append(",00.");
+    public String darTroco() {
+        if (saldo > 0) {
+            int troco = saldo;
+            saldo = 0;
+            return "Seu troco é de R$" + troco + ",00.";
         } else {
-            resultado.append("sem troco.");
+            return "Não há troco a ser retirado.";
         }
-
-        saldo = 0;
-        docesComprados.clear();
-        return resultado.toString();
     }
 }
